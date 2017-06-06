@@ -1,0 +1,25 @@
+---
+output: github_document
+---
+
+## Pig Latin
+
+This R package allows the user to translate an arbitrary text into 
+[Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin).
+
+```{r, eval=FALSE}
+devtools::install_github("expersso/piglatin")
+```
+
+```{r}
+library(piglatin)
+library(magrittr)
+
+url("http://history.eserver.org/gettysburg-address.txt") %>%
+  readLines() %>%
+  .[4:26] %>%
+  paste(collapse = "") %>%
+  pigify() %>% 
+  strwrap(60) %>%
+  cat(sep = "\n")
+```
